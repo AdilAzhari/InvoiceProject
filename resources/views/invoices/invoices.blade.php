@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Invoce Page
+@stop
 
 @section('css')
 <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -81,7 +84,7 @@
 										<tbody>
 											<tr>
                                                 <td>1</td>
-												<td>Donna Snider</td>
+    												<td>Donna Snider</td>
 												<td>Customer Support</td>
 												<td>New York</td>
 												<td>27</td>
