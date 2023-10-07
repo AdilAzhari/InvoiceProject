@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\sections;
 use App\Http\Requests\StoresectionsRequest;
 use App\Http\Requests\UpdatesectionsRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SectionsController extends Controller
 {
@@ -29,7 +30,17 @@ class SectionsController extends Controller
      */
     public function store(StoresectionsRequest $request)
     {
-        //
+        $section = sections::where('section_name',$request->section_name)->get();
+
+            sections::create([
+                'section_name' => $request->section_name,
+                'description' => $request->description,
+                'Created_by' => Auth::user()->name,
+            ]);
+            session()->flash('Add', 'section has been added');
+            return redirect('/sections');
+
+        // return $section;
     }
 
     /**
