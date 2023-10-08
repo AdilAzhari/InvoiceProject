@@ -3,17 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Arr;
-use Nette\Utils\Arrays;
 
-class StoresectionsRequest extends FormRequest
+class UpdateproductsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return True;
+        return true;
     }
 
     /**
@@ -24,16 +22,7 @@ class StoresectionsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'section_name' => 'required|unique:sections|max:255',
-            'description' => 'required'
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'section_name.required' =>'Section name required',
-            'section_name.unique'=> 'section name already exist',
+            //
         ];
     }
 }

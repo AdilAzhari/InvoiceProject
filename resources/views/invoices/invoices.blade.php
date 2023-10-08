@@ -50,7 +50,7 @@
 @endsection
 @section('content')
 				<!-- row opened -->
-				<div class="row row-sm">
+				<div class="row">
 					<!--div-->
 					<div class="col-xl-12">
 						<div class="card mg-b-20">
