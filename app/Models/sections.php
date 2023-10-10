@@ -25,4 +25,13 @@ class sections extends Model
     {
         return $this->hasMany(products::class);
     }
+    /**
+     * Get all of the invoices for the sections
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

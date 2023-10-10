@@ -23,12 +23,11 @@ return new class extends Migration
             $table->string('rate_vat');
             $table->decimal('Value_vat');
             $table->decimal('Total',8,2);
-            $table->decimal('ammount');
             $table->string('Status', 50);
             $table->integer('Value_Status');
             $table->text('note')->nullable();
             $table->date('Payment_Date')->nullable();
-            $table->string('user');
+            // $table->string('user');
             $table->softDeletes();
             $table->timestamps();
         });

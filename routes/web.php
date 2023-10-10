@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\invoices_details;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SectionsController;
 use App\Models\products;
@@ -38,5 +39,8 @@ Route::resource('products', ProductsController::class);
 
 Route::controller(invoiceController::class)->group(function () {
     Route::get('/section/{id}', 'getProducts');
-    // Route::post('/orders', 'store');
+});
+
+Route::controller(invoices_details::class)->group(function () {
+    Route::get('/InvoicesDetails/{id}', 'edit');
 });

@@ -19,7 +19,8 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        return view('invoices.invoices');
+        $invoices = Invoice::all();
+        return view('invoices.invoices',compact('invoices'));
     }
 
     /**
@@ -36,6 +37,8 @@ class InvoiceController extends Controller
      */
     public function store(StoreInvoiceRequest $request)
     {
+        // return $request;
+
         Invoice::create([
             'invoice_number' => $request->invoice_number,
             'invoice_Date' => $request->invoice_Date,
@@ -93,7 +96,7 @@ class InvoiceController extends Controller
 
 
 
-        event(new MyEventClass('hello world'));
+        // event(new MyEventClass('hello world'));
 
         session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
         return back();
