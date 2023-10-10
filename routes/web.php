@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Customers_Report;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\invoices_details;
+use App\Http\Controllers\Invoices_Report;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SectionsController;
 use App\Models\products;
@@ -37,10 +39,66 @@ Route::resource('sections', SectionsController::class);
 
 Route::resource('products', ProductsController::class);
 
-Route::controller(invoiceController::class)->group(function () {
-    Route::get('/section/{id}', 'getProducts');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('invoices', 'InvoicesController');
+
+Route::resource('sections', 'SectionsController');
+
+Route::resource('products', 'ProductsController');
+
+Route::resource('InvoiceAttachments', 'InvoiceAttachmentsController');
+
+//Route::resource('InvoicesDetails', 'InvoicesDetailsController');
+
+Route::resource('Archive', 'InvoiceAchiveController');
+
+Route::group(['middleware' => ['auth']], function() {
+
+Route::resource('roles','RoleController');
+
+Route::resource('users','UserController');
+
 });
+
+
+
 
 Route::controller(invoices_details::class)->group(function () {
     Route::get('/InvoicesDetails/{id}', 'edit');
+    Route::get('download/{invoice_number}/{file_name}', 'get_file');
+    Route::get('View_file/{invoice_number}/{file_name}', 'open_file');
+    Route::post('delete_file', 'destroy')->name('delete_file');
 });
+
+
+Route::controller(Invoices_Report::class)->group(function () {
+    Route::get('/invoices_report', 'index');
+    Route::post('/Search_invoices', 'Search_invoices');
+});
+
+Route::controller(Customers_Report::class)->group(function () {
+    Route::get('/customers_report', 'index')->name("customers_report");
+    Route::post('/Search_customers', 'Search_customers');
+});
+
+Route::controller(InvoiceController::class)->group(function () {
+    Route::get('/MarkAsRead_all', 'MarkAsRead_all')->name("MarkAsRead_all");
+    Route::get('/unreadNotifications_count', 'unreadNotifications_count')->name('unreadNotifications_count');
+    Route::get('unreadNotifications', 'unreadNotifications')->name('unreadNotifications');
+    Route::get('/section/{id}', 'InvoicesController@getproducts');
+    Route::get('/edit_invoice/{id}', 'edit');
+    Route::get('/Status_show/{id}', 'show')->name('Status_show');
+    Route::post('/Status_Update/{id}', 'Status_Update')->name('Status_Update');
+    Route::get('Invoice_Paid','Invoice_Paid');
+    Route::get('Invoice_UnPaid','Invoice_UnPaid');
+    Route::get('Invoice_Partial','Invoice_Partial');
+    Route::get('Print_invoice/{id}','Print_invoice');
+    Route::get('export_invoices', 'export');
+
+});
+
+
+
+
+Route::get('/{page}', 'AdminController@index');
