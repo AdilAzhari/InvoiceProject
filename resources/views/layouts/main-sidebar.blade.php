@@ -14,8 +14,10 @@
 							<img alt="user-img" class="avatar avatar-xl brround" src="{{URL::asset('assets/img/faces/6.jpg')}}"><span class="avatar-status profile-status bg-green"></span>
 						</div>
 						<div class="user-info">
-							<h4 class="font-weight-semibold mt-3 mb-0">{{ Auth::user()->name }}</h4>
-							<span class="mb-0 text-muted">Premium Member</span>
+                            @auth
+                                <h4 class="font-weight-semibold mt-3 mb-0">{{ Auth::user()->name }}</h4>
+                                <span class="mb-0 text-muted">Premium Member</span>
+                            @endauth
 						</div>
 					</div>
 				</div>

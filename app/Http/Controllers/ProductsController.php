@@ -25,7 +25,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        $sections = sections::all();
+        return view('invoices.add_invoice',compact('sections'));
     }
 
     /**
@@ -33,7 +34,6 @@ class ProductsController extends Controller
      */
     public function store(StoreproductsRequest $request)
     {
-
         products::create([
             'Product_name' => $request->Product_name,
             'description' => $request->description,
@@ -57,11 +57,11 @@ class ProductsController extends Controller
      */
     public function update(UpdateproductsRequest $request, products $products)
     {
-        return $request;
+        $id = sections::where('section_name',$request->section_name)->first()->id;
         products::where('id',$request->pro_id)->update([
             'Product_name' => $request->Product_name,
             'description' => $request->description,
-            'section_id' => $request->section_id,
+            'section_id' => $id,
         ]);
 
         session()->flash('Edit', 'Products has been updated');

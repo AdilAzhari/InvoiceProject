@@ -35,3 +35,8 @@ Route::resource('invoices', InvoiceController::class);
 Route::resource('sections', SectionsController::class);
 
 Route::resource('products', ProductsController::class);
+
+Route::controller(invoiceController::class)->group(function () {
+    Route::get('/section/{id}', 'getProducts');
+    // Route::post('/orders', 'store');
+});
