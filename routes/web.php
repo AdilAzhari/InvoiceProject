@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Customers_Report;
+use App\Http\Controllers\InvoiceAchiveController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\invoices_details;
 use App\Http\Controllers\Invoices_Report;
@@ -85,9 +86,9 @@ Route::controller(InvoiceController::class)->group(function () {
     Route::get('/edit_invoice/{id}', 'edit');
     Route::get('/Status_show/{id}', 'show')->name('Status_show');
     Route::post('/Status_Update/{id}', 'Status_Update')->name('Status_Update');
-    Route::get('Invoice_Paid','Invoice_Paid');
-    Route::get('Invoice_UnPaid','Invoice_UnPaid');
-    Route::get('Invoice_Partial','Invoice_Partial');
+    Route::get('Invoice_Paid','Invoice_Paid')->name('paid_invoices');
+    Route::get('Invoice_UnPaid','Invoice_UnPaid')->name('UnPaid_invoices');
+    Route::get('Invoice_Partial','Invoice_Partial')->name('invoices_partially_paid');
     Route::get('Print_invoice/{id}','Print_invoice');
     Route::get('export_invoices', 'export');
 

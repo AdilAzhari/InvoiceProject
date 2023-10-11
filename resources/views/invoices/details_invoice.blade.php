@@ -75,10 +75,10 @@
                                     <div class="tabs-menu1">
                                         <!-- Tabs -->
                                         <ul class="nav panel-tabs main-nav-line">
-                                            <li><a href="#tab4" class="nav-link active" data-toggle="tab">معلومات
-                                                    الفاتورة</a></li>
-                                            <li><a href="#tab5" class="nav-link" data-toggle="tab">حالات الدفع</a></li>
-                                            <li><a href="#tab6" class="nav-link" data-toggle="tab">المرفقات</a></li>
+                                            <li><a href="#tab4" class="nav-link active" data-toggle="tab">Invoice Information
+                                                    </a></li>
+                                            <li><a href="#tab5" class="nav-link" data-toggle="tab">Payment Status </a></li>
+                                            <li><a href="#tab6" class="nav-link" data-toggle="tab">Attachments</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -92,13 +92,13 @@
                                                 <table class="table table-striped" style="text-align:center">
                                                     <tbody>
                                                         <tr>
-                                                            <th scope="row">رقم الفاتورة</th>
+                                                            <th scope="row">invoice number</th>
                                                             <td>{{ $invoices->invoice_number }}</td>
-                                                            <th scope="row">تاريخ الاصدار</th>
+                                                            <th scope="row">invoice Date </th>
                                                             <td>{{ $invoices->invoice_Date }}</td>
-                                                            <th scope="row">تاريخ الاستحقاق</th>
+                                                            <th scope="row">Due date </th>
                                                             <td>{{ $invoices->Due_date }}</td>
-                                                            <th scope="row">القسم</th>
+                                                            <th scope="row">Section</th>
                                                             <td>{{ $invoices->Section->section_name }}</td>
                                                         </tr>
 
@@ -115,9 +115,9 @@
 
 
                                                         <tr>
-                                                            <th scope="row">نسبة الضريبة</th>
+                                                            <th scope="row">Rate VAT </th>
                                                             <td>{{ $invoices->Rate_VAT }}</td>
-                                                            <th scope="row">قيمة الضريبة</th>
+                                                            <th scope="row">Value VAT </th>
                                                             <td>{{ $invoices->Value_VAT }}</td>
                                                             <th scope="row">الاجمالي مع الضريبة</th>
                                                             <td>{{ $invoices->Total }}</td>

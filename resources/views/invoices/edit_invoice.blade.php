@@ -51,14 +51,14 @@
                         {{-- 1 --}}
                         <div class="row">
                             <div class="col">
-                                <label for="inputName" class="control-label">رقم الفاتورة</label>
+                                <label for="inputName" class="control-label">Invoice Number </label>
                                 <input type="hidden" name="invoice_id" value="{{ $invoices->id }}">
                                 <input type="text" class="form-control" id="inputName" name="invoice_number"
-                                    title="يرجي ادخال رقم الفاتورة" value="{{ $invoices->invoice_number }}" required>
+                                    title=" Please enter the invoice number" value="{{ $invoices->invoice_number }}" required>
                             </div>
 
                             <div class="col">
-                                <label>تاريخ الفاتورة</label>
+                                <label>Invoice Date</label>
                                 <input class="form-control fc-datepicker" name="invoice_Date" placeholder="YYYY-MM-DD"
                                     type="text" value="{{ $invoices->invoice_Date }}" required>
                             </div>
@@ -74,7 +74,7 @@
                         {{-- 2 --}}
                         <div class="row">
                             <div class="col">
-                                <label for="inputName" class="control-label">القسم</label>
+                                <label for="inputName" class="control-label">section</label>
                                 <select name="Section" class="form-control SlectBox" onclick="console.log($(this).val())"
                                     onchange="console.log('change is firing')">
                                     <!--placeholder-->
@@ -120,15 +120,15 @@
                                 <input type="text" class="form-control form-control-lg" id="Discount" name="Discount"
                                     title="Please enter the discount percentage"
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                    value="{{ $invoices->Discount }}" required>
+                                    value="{{ $invoices->discount }}" required>
                             </div>
 
                             <div class="col">
                                 <label for="inputName" class="control-label">Rate VAT Percentage </label>
                                 <select name="Rate_VAT" id="Rate_VAT" class="form-control" onchange="myFunction()">
                                     <!--placeholder-->
-                                    <option value=" {{ $invoices->Rate_VAT }}">
-                                        {{ $invoices->Rate_VAT }}
+                                    <option value=" {{ $invoices->rate_vat }}">
+                                        {{ $invoices->rate_vat }}
                                     <option value=" 5%">5%</option>
                                     <option value="10%">10%</option>
                                 </select>
@@ -142,7 +142,7 @@
                             <div class="col">
                                 <label for="inputName" class="control-label"> Value VAT Percentage</label>
                                 <input type="text" class="form-control" id="Value_VAT" name="Value_VAT"
-                                    value="{{ $invoices->Value_VAT }}" readonly>
+                                    value="{{ $invoices->Value_vat }}" readonly>
                             </div>
 
                             <div class="col">

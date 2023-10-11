@@ -71,18 +71,18 @@
                             <thead>
                                 <tr>
                                     <th class="border-bottom-0">#</th>
-                                    <th class="border-bottom-0">رقم الفاتورة</th>
-                                    <th class="border-bottom-0">تاريخ القاتورة</th>
-                                    <th class="border-bottom-0">تاريخ الاستحقاق</th>
-                                    <th class="border-bottom-0">المنتج</th>
-                                    <th class="border-bottom-0">القسم</th>
-                                    <th class="border-bottom-0">الخصم</th>
-                                    <th class="border-bottom-0">نسبة الضريبة</th>
-                                    <th class="border-bottom-0">قيمة الضريبة</th>
-                                    <th class="border-bottom-0">الاجمالي</th>
-                                    <th class="border-bottom-0">الحالة</th>
-                                    <th class="border-bottom-0">ملاحظات</th>
-                                    <th class="border-bottom-0">العمليات</th>
+                                    <th class="border-bottom-0">Invoice Number </th>
+                                    <th class="border-bottom-0">Invoce Date </th>
+                                    <th class="border-bottom-0">Due Date </th>
+                                    <th class="border-bottom-0">Product</th>
+                                    <th class="border-bottom-0">Section</th>
+                                    <th class="border-bottom-0">Discount</th>
+                                    <th class="border-bottom-0">rate_vat </th>
+                                    <th class="border-bottom-0">Value_vat </th>
+                                    <th class="border-bottom-0">Total</th>
+                                    <th class="border-bottom-0">Status</th>
+                                    <th class="border-bottom-0">Notes</th>
+                                    <th class="border-bottom-0">Operations</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,9 +102,9 @@
                                         <td><a
                                                 href="{{ url('InvoicesDetails') }}/{{ $invoice->id }}">{{ $invoice->section->section_name }}</a>
                                         </td>
-                                        <td>{{ $invoice->Discount }}</td>
-                                        <td>{{ $invoice->Rate_VAT }}</td>
-                                        <td>{{ $invoice->Value_VAT }}</td>
+                                        <td>{{ $invoice->discount }}</td>
+                                        <td>{{ $invoice->rate_vat }}</td>
+                                        <td>{{ $invoice->Value_vat }}</td>
                                         <td>{{ $invoice->Total }}</td>
                                         <td>
                                             @if ($invoice->Value_Status == 1)
@@ -125,20 +125,19 @@
                                                     type="button">العمليات<i class="fas fa-caret-down ml-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
                                                     <a class="dropdown-item"
-                                                        href=" {{ url('edit_invoice') }}/{{ $invoice->id }}">تعديل
-                                                        الفاتورة</a>
+                                                        href=" {{ url('edit_invoice') }}/{{ $invoice->id }}">Edit
+                                                        Invoice</a>
 
                                                     <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                         data-toggle="modal" data-target="#delete_invoice"><i
-                                                            class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;حذف
-                                                        الفاتورة</a>
+                                                            class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;Delet
+                                                        Invoice</a>
 
                                                     <a class="dropdown-item"
                                                         href="{{ URL::route('Status_show', [$invoice->id]) }}"><i
                                                             class=" text-success fas
-                                                                                                                                    fa-money-bill"></i>&nbsp;&nbsp;تغير
-                                                        حالة
-                                                        الدفع</a>
+                                                                                                                                    fa-money-bill"></i>&nbsp;&nbsp;Change
+                                                        Payment Status</a>
 
                                                     <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                         data-toggle="modal" data-target="#Transfer_invoice"><i
@@ -167,7 +166,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">حذف الفاتورة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delet Invoice </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -180,8 +179,8 @@
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-danger">تاكيد</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Confirm</button>
                 </div>
                 </form>
             </div>
@@ -195,7 +194,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ارشفة الفاتورة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Invoice Archive </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -210,8 +209,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-success">تاكيد</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Confirm</button>
                 </div>
                 </form>
             </div>
