@@ -59,9 +59,6 @@ Route::resource('users','UserController');
 
 });
 
-
-
-
 Route::controller(invoices_details::class)->group(function () {
     Route::get('/InvoicesDetails/{id}', 'edit');
     Route::get('download/{invoice_number}/{file_name}', 'get_file');
@@ -96,7 +93,4 @@ Route::controller(InvoiceController::class)->group(function () {
 
 });
 
-
-
-
-Route::get('/{page}', 'AdminController@index');
+// Route::get('/{page}', 'AdminController@index');

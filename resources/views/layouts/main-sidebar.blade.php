@@ -14,10 +14,12 @@
 							<img alt="user-img" class="avatar avatar-xl brround" src="{{URL::asset('assets/img/faces/6.jpg')}}"><span class="avatar-status profile-status bg-green"></span>
 						</div>
 						<div class="user-info">
-                            @auth
+                            @if (auth()->check())
                                 <h4 class="font-weight-semibold mt-3 mb-0">{{ Auth::user()->name }}</h4>
-                                <span class="mb-0 text-muted">Premium Member</span>
-                            @endauth
+                                <span class="mb-0 text-muted">{{ Auth::user()->email }}</span>
+                            @else
+                                {{ url('/login') }}
+                            @endif
 						</div>
 					</div>
 				</div>
@@ -35,8 +37,6 @@
 							<li><a class="slide-item" href="{{ url('/' . $page='chart-flot') }}">Paid Invoices</a></li>
 							<li><a class="slide-item" href="{{ url('/' . $page='chart-chartjs') }}">Unpaid Invoices</a></li>
 							<li><a class="slide-item" href="{{ url('/' . $page='chart-echart') }}">Partily Paid</a></li>
-							{{-- <li><a class="slide-item" href="{{ url('/' . $page='chart-sparkline') }}">Sparkline</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='chart-peity') }}">Chart-peity</a></li> --}}
 						</ul>
 					</li>
 					<li class="side-item side-item-category">Reports</li>

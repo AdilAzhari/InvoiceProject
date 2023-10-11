@@ -5,16 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
-use App\Models\invoice_attachments;
-use App\Models\invoices_details;
-use App\Models\products;
-use App\Models\sections;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Models\{invoices_details,products,invoice_attachments};
+use App\Models\{User,sections};
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\{DB,Excel};
+use Illuminate\Support\Facades\{Storage,Notification,Auth};
 
 class InvoiceController extends Controller
 {
@@ -156,12 +151,12 @@ class InvoiceController extends Controller
      */
     public function destroy(Request $request)
     {
+
         $id = $request->invoice_id;
         $invoices = invoice::where('id', $id)->first();
         $Details = invoice_attachments::where('invoice_id', $id)->first();
 
         $id_page = $request->id_page;
-
 
         if (!$id_page == 2) {
 
@@ -170,7 +165,7 @@ class InvoiceController extends Controller
                 Storage::disk('public_uploads')->deleteDirectory($Details->invoice_number);
             }
 
-            $invoices->forceDelete();
+            $invoices->Delete();
             session()->flash('delete_invoice');
             return redirect('/invoices');
         } else {
@@ -191,7 +186,7 @@ class InvoiceController extends Controller
     {
         $invoices = invoice::findOrFail($id);
 
-        if ($request->Status === 'مدفوعة') {
+        if ($request->Status === 'paid') {
 
             $invoices->update([
                 'Value_Status' => 1,
@@ -260,7 +255,7 @@ class InvoiceController extends Controller
     public function export()
     {
 
-        return Excel::download(new InvoicesExport, 'invoices.xlsx');
+        return App\Http\Controllers\Excel::download(new InvoicesExport, 'invoices.xlsx');
     }
 
 
