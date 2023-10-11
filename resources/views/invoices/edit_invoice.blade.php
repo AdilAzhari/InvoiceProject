@@ -257,7 +257,7 @@
                 alert('Please enter Amount Commission  ');
 
             } else {
-                var intResults = Amount_Commission2 * Rate_VAT / 100;
+                varc intResults = Amount_Commission2 * Rate_VAT / 100;
 
                 var intResults2 = parseFloat(intResults + Amount_Commission2);
 

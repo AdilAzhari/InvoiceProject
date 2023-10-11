@@ -39,19 +39,17 @@ Route::resource('sections', SectionsController::class);
 
 Route::resource('products', ProductsController::class);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('invoices', InvoiceController::class);
 
-Route::resource('invoices', 'InvoicesController');
+Route::resource('sections', SectionsController::class);
 
-Route::resource('sections', 'SectionsController');
+Route::resource('products', ProductsController::class);
 
-Route::resource('products', 'ProductsController');
+Route::resource('InvoiceAttachments', InvoiceAttachmentsController::class);
 
-Route::resource('InvoiceAttachments', 'InvoiceAttachmentsController');
+Route::resource('InvoicesDetails', InvoicesDetailsController::class);
 
-//Route::resource('InvoicesDetails', 'InvoicesDetailsController');
-
-Route::resource('Archive', 'InvoiceAchiveController');
+Route::resource('Archive', InvoiceAchiveController::class);
 
 Route::group(['middleware' => ['auth']], function() {
 
@@ -86,7 +84,7 @@ Route::controller(InvoiceController::class)->group(function () {
     Route::get('/MarkAsRead_all', 'MarkAsRead_all')->name("MarkAsRead_all");
     Route::get('/unreadNotifications_count', 'unreadNotifications_count')->name('unreadNotifications_count');
     Route::get('unreadNotifications', 'unreadNotifications')->name('unreadNotifications');
-    Route::get('/section/{id}', 'InvoicesController@getproducts');
+    Route::get('/section/{id}', 'getproducts');
     Route::get('/edit_invoice/{id}', 'edit');
     Route::get('/Status_show/{id}', 'show')->name('Status_show');
     Route::post('/Status_Update/{id}', 'Status_Update')->name('Status_Update');

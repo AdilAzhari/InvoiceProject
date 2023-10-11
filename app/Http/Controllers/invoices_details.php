@@ -10,17 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class invoices_details extends Controller
 {
-    public function index()
-    {
-    }
-
-    public function create()
-    {
-    }
-
-    public function store()
-    {
-    }
 
     public function edit($id)
 
