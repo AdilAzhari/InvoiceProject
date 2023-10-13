@@ -92,7 +92,7 @@ Route::controller(InvoiceController::class)->group(function () {
     Route::get('Invoice_UnPaid', 'Invoice_UnPaid')->name('UnPaid_invoices');
     Route::get('Invoice_Partial', 'Invoice_Partial')->name('invoices_partially_paid');
     Route::get('Print_invoice/{id}', 'Print_invoice');
-    Route::get('export_invoices', 'export');
+    // Route::get('export_invoices', 'export');
 });
 
 // Route::get('/{page}', 'AdminController@index');

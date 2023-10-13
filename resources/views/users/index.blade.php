@@ -43,9 +43,9 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="col-sm-1 col-md-2">
-                    @can('اضافة مستخدم')
+                    {{-- @can('اضافة مستخدم') --}}
                         <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">اضافة مستخدم</a>
-                    @endcan
+                    {{-- @endcan --}}
                 </div>
             </div>
             <div class="card-body">

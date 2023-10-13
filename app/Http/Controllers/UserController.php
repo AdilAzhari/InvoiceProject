@@ -94,10 +94,11 @@ class UserController extends Controller
             'roles' => 'required'
         ]);
         $input = $request->all();
-        // if (!empty($input['password'])) {
-            $input['password'] = hash()::make($input['password']);
+        // if (!empty($request->password)) {
+            $input['password'] = bcrypt($request->password);
         // } else {
-        //     $input = array_except($input, ['password']);
+            // $input = array_except($input, ['password']);
+            // ($request->all(), ['password', 'otherKey']);
         // }
         $user = User::find($id);
         $user->update($input);
