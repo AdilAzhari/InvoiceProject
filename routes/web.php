@@ -2,12 +2,15 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Customers_Report;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceAchiveController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\invoices_details;
 use App\Http\Controllers\Invoices_Report;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\UserController;
 use App\Models\products;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -52,12 +55,11 @@ Route::resource('InvoicesDetails', InvoicesDetailsController::class);
 
 Route::resource('Archive', InvoiceAchiveController::class);
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
 
-Route::resource('roles','RoleController');
+    Route::resource('roles', 'RoleController');
 
-Route::resource('users','UserController');
-
+    Route::resource('users', 'UserController');
 });
 
 Route::controller(invoices_details::class)->group(function () {
@@ -86,12 +88,16 @@ Route::controller(InvoiceController::class)->group(function () {
     Route::get('/edit_invoice/{id}', 'edit');
     Route::get('/Status_show/{id}', 'show')->name('Status_show');
     Route::post('/Status_Update/{id}', 'Status_Update')->name('Status_Update');
-    Route::get('Invoice_Paid','Invoice_Paid')->name('paid_invoices');
-    Route::get('Invoice_UnPaid','Invoice_UnPaid')->name('UnPaid_invoices');
-    Route::get('Invoice_Partial','Invoice_Partial')->name('invoices_partially_paid');
-    Route::get('Print_invoice/{id}','Print_invoice');
+    Route::get('Invoice_Paid', 'Invoice_Paid')->name('paid_invoices');
+    Route::get('Invoice_UnPaid', 'Invoice_UnPaid')->name('UnPaid_invoices');
+    Route::get('Invoice_Partial', 'Invoice_Partial')->name('invoices_partially_paid');
+    Route::get('Print_invoice/{id}', 'Print_invoice');
     Route::get('export_invoices', 'export');
-
 });
 
 // Route::get('/{page}', 'AdminController@index');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+});
