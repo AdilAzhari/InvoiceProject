@@ -56,7 +56,7 @@
     @endif
 
     @if (auth()->check())
-        <h6>{{ Auth::user()->name }}</h6><span>Premium Member</span>
+        <h6>{{ Auth::user()->name }}</h6><span>{{ Auth::user()->email }}</span>
     @else
         {{ route('login') }}
     @endif
@@ -103,13 +103,13 @@
                                                         </tr>
 
                                                         <tr>
-                                                            <th scope="row">المنتج</th>
+                                                            <th scope="row">Product</th>
                                                             <td>{{ $invoices->product }}</td>
-                                                            <th scope="row">مبلغ التحصيل</th>
+                                                            <th scope="row">Amount collection </th>
                                                             <td>{{ $invoices->Amount_collection }}</td>
-                                                            <th scope="row">مبلغ العمولة</th>
+                                                            <th scope="row">Amount Commission</th>
                                                             <td>{{ $invoices->Amount_Commission }}</td>
-                                                            <th scope="row">الخصم</th>
+                                                            <th scope="row">Discount</th>
                                                             <td>{{ $invoices->Discount }}</td>
                                                         </tr>
 
@@ -119,9 +119,9 @@
                                                             <td>{{ $invoices->Rate_VAT }}</td>
                                                             <th scope="row">Value VAT </th>
                                                             <td>{{ $invoices->Value_VAT }}</td>
-                                                            <th scope="row">الاجمالي مع الضريبة</th>
+                                                            <th scope="row">Total</th>
                                                             <td>{{ $invoices->Total }}</td>
-                                                            <th scope="row">الحالة الحالية</th>
+                                                            <th scope="row">Status </th>
 
                                                             @if ($invoices->Value_Status == 1)
                                                                 <td><span
@@ -139,7 +139,7 @@
                                                         </tr>
 
                                                         <tr>
-                                                            <th scope="row">ملاحظات</th>
+                                                            <th scope="row">Discription</th>
                                                             <td>{{ $invoices->note }}</td>
                                                         </tr>
                                                     </tbody>
@@ -155,14 +155,14 @@
                                                     <thead>
                                                         <tr class="text-dark">
                                                             <th>#</th>
-                                                            <th>رقم الفاتورة</th>
-                                                            <th>نوع المنتج</th>
-                                                            <th>القسم</th>
-                                                            <th>حالة الدفع</th>
-                                                            <th>تاريخ الدفع </th>
-                                                            <th>ملاحظات</th>
-                                                            <th>تاريخ الاضافة </th>
-                                                            <th>المستخدم</th>
+                                                            <th>Invoice Number </th>
+                                                            <th>Prodcut type</th>
+                                                            <th>Product</th>
+                                                            <th>Payment Status</th>
+                                                            <th>Due Date </th>
+                                                            <th>Note</th>
+                                                            <th>Date added</th>
+                                                            <th>User</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -204,10 +204,10 @@
                                         <div class="tab-pane" id="tab6">
                                             <!--المرفقات-->
                                             <div class="card card-statistics">
-                                                @can('اضافة مرفق')
+                                                {{-- @can('اضافة مرفق') --}}
                                                     <div class="card-body">
-                                                        <p class="text-danger">* صيغة المرفق pdf, jpeg ,.jpg , png </p>
-                                                        <h5 class="card-title">اضافة مرفقات</h5>
+                                                        <p class="text-danger">* Attachment format pdf, jpeg ,.jpg , png </p>
+                                                        <h5 class="card-title">Add attachments</h5>
                                                         <form method="post" action="{{ url('/InvoiceAttachments') }}"
                                                             enctype="multipart/form-data">
                                                             {{ csrf_field() }}
@@ -218,14 +218,14 @@
                                                                     value="{{ $invoices->invoice_number }}">
                                                                 <input type="hidden" id="invoice_id" name="invoice_id"
                                                                     value="{{ $invoices->id }}">
-                                                                <label class="custom-file-label" for="customFile">حدد
-                                                                    المرفق</label>
+                                                                <label class="custom-file-label" for="customFile">Select
+                                                                    Attachment</label>
                                                             </div><br><br>
                                                             <button type="submit" class="btn btn-primary btn-sm "
-                                                                name="uploadedFile">تاكيد</button>
+                                                                name="uploadedFile">Confirm</button>
                                                         </form>
                                                     </div>
-                                                @endcan
+                                                {{-- @endcan --}}
                                                 <br>
 
                                                 <div class="table-responsive mt-15">
@@ -233,11 +233,11 @@
                                                         style="text-align:center">
                                                         <thead>
                                                             <tr class="text-dark">
-                                                                <th scope="col">م</th>
-                                                                <th scope="col">اسم الملف</th>
-                                                                <th scope="col">قام بالاضافة</th>
-                                                                <th scope="col">تاريخ الاضافة</th>
-                                                                <th scope="col">العمليات</th>
+                                                                <th scope="col">Index</th>
+                                                                <th scope="col">file_name</th>
+                                                                <th scope="col">Created_by</th>
+                                                                <th scope="col">Date added</th>
+                                                                <th scope="col">Operations</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -262,14 +262,14 @@
                                                                                 class="fas fa-download"></i>&nbsp;
                                                                             تحميل</a>
 
-                                                                        @can('حذف المرفق')
+                                                                        {{-- @can('حذف المرفق') --}}
                                                                             <button class="btn btn-outline-danger btn-sm"
                                                                                 data-toggle="modal"
                                                                                 data-file_name="{{ $attachment->file_name }}"
                                                                                 data-invoice_number="{{ $attachment->invoice_number }}"
                                                                                 data-id_file="{{ $attachment->id }}"
                                                                                 data-target="#delete_file">حذف</button>
-                                                                        @endcan
+                                                                        {{-- @endcan --}}
 
                                                                     </td>
                                                                 </tr>
@@ -301,7 +301,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">حذف المرفق</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delete attachment</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -311,7 +311,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <p class="text-center">
-                        <h6 style="color:red"> هل انت متاكد من عملية حذف المرفق ؟</h6>
+                        <h6 style="color:red"> Are you sure you want to delete the attachment?</h6>
                         </p>
 
                         <input type="hidden" name="id_file" id="id_file" value="">
@@ -320,8 +320,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
-                        <button type="submit" class="btn btn-danger">تاكيد</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Confirm</button>
                     </div>
                 </form>
             </div>

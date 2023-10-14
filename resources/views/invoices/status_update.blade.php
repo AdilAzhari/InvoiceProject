@@ -2,15 +2,15 @@
 @section('css')
 @endsection
 @section('title')
-    تغير حالة الدفع
+Change of payment status
 @stop
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الفواتير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    تغير حالة الدفع</span>
+                <h4 class="content-title mb-0 my-auto">Invoices</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                    Change payment status</span>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
                                 <label for="inputName" class="control-label">Invoice Number</label>
                                 <input type="hidden" name="invoice_id" value="{{ $invoices->id }}">
                                 <input type="text" class="form-control" id="inputName" name="invoice_number"
-                                    title="يرجي ادخال رقم الفاتورة" value="{{ $invoices->invoice_number }}" required
+                                    title="Please enter the invoice number" value="{{ $invoices->invoice_number }}" required
                                     readonly>
                             </div>
 

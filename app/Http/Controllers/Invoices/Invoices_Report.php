@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Invoices;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\invoices;
 use App\Models\Invoice;
@@ -18,7 +19,6 @@ class Invoices_Report extends Controller
     {
 
         $rdio = $request->rdio;
-
 
         // في حالة البحث بنوع الفاتورة
 
@@ -50,7 +50,7 @@ class Invoices_Report extends Controller
         // في البحث برقم الفاتورة
         else {
 
-            $invoices = invoices::select('*')->where('invoice_number', '=', $request->invoice_number)->get();
+            $invoices = invoice::select('*')->where('invoice_number', '=', $request->invoice_number)->get();
             return view('reports.invoices_report')->withDetails($invoices);
         }
     }

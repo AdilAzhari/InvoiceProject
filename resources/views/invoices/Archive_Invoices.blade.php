@@ -32,11 +32,10 @@
         <script>
             window.onload = function() {
                 notif({
-                    msg: "تم أرشفة الفاتورة بنجاح",
+                    msg: "The invoice has been successfully archived",
                     type: "success"
                 })
             }
-
         </script>
     @endif
 
@@ -44,11 +43,10 @@
         <script>
             window.onload = function() {
                 notif({
-                    msg: "تم حذف الفاتورة بنجاح",
+                    msg: "The invoice was deleted successfully",
                     type: "success"
                 })
             }
-
         </script>
     @endif
 
@@ -74,8 +72,8 @@
                                     <th class="border-bottom-0">Products</th>
                                     <th class="border-bottom-0">Section</th>
                                     <th class="border-bottom-0">Discount</th>
-                                    <th class="border-bottom-0">نسبة الضريبة</th>
-                                    <th class="border-bottom-0">قيمة الضريبة</th>
+                                    <th class="border-bottom-0">Rate vat</th>
+                                    <th class="border-bottom-0">Value vat</th>
                                     <th class="border-bottom-0">Total</th>
                                     <th class="border-bottom-0">Status</th>
                                     <th class="border-bottom-0">Discription</th>
@@ -84,11 +82,11 @@
                             </thead>
                             <tbody>
                                 @php
-                                $i = 0;
+                                    $i = 0;
                                 @endphp
                                 @foreach ($invoices as $invoice)
                                     @php
-                                    $i++
+                                        $i++;
                                     @endphp
                                     <tr>
                                         <td>{{ $i }}</td>
@@ -121,14 +119,17 @@
                                                     class="btn ripple btn-primary btn-sm" data-toggle="dropdown"
                                                     type="button">Operations<i class="fas fa-caret-down ml-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
-                                                    <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
-                                                        data-toggle="modal" data-target="#Transfer_invoice"><i
+                                                    <a class="dropdown-item" href="#"
+                                                        data-invoice_id="{{ $invoice->id }}" data-toggle="modal"
+                                                        data-target="#Transfer_invoice"><i
                                                             class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;Move To
                                                         Invoices</a>
-                                                    <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
-                                                        data-toggle="modal" data-target="#delete_invoice"><i
-                                                            class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;Delet Invoice
-                                                        </a>
+                                                    <a class="dropdown-item" href="#"
+                                                        data-invoice_id="{{ $invoice->id }}" data-toggle="modal"
+                                                        data-target="#delete_invoice"><i
+                                                            class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;Delet
+                                                        Invoice
+                                                    </a>
                                                 </div>
                                             </div>
 
@@ -151,7 +152,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">حذف الفاتورة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delet invoice</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -160,13 +161,13 @@
                         {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                    هل انت متاكد من عملية الحذف ؟
+                    Are sure of the deleting process ?
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-danger">تاكيد</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Confirm</button>
                 </div>
                 </form>
             </div>
@@ -179,7 +180,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">الغاء ارشفة الفاتورة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Cancel archiving the invoice</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -188,13 +189,13 @@
                         {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                    هل انت متاكد من عملية الغاء الارشفة ؟
+                    Are you sure about the unarchiving process?
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-success">تاكيد</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Confirm</button>
                 </div>
                 </form>
             </div>
@@ -239,7 +240,6 @@
             var modal = $(this)
             modal.find('.modal-body #invoice_id').val(invoice_id);
         })
-
     </script>
 
     <script>
@@ -249,7 +249,6 @@
             var modal = $(this)
             modal.find('.modal-body #invoice_id').val(invoice_id);
         })
-
     </script>
 
 @endsection

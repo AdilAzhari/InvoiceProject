@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Invoices;
 
+use App\Http\Controllers\Controller;
 use App\invoice_attachments;
 use App\Models\invoice_attachments as ModelsInvoice_attachments;
 use Illuminate\Http\Request;

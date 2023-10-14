@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Invoices;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\invoices;
 use App\Models\Invoice;

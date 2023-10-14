@@ -3,62 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Invoice;
+use App\Models\sections;
 
 class Customers_Report extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+
+        $sections = sections::all();
+
+        return view('reports.customers_report', compact('sections'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function Search_customers(Request $request)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        // في حالة البحث بدون التاريخ
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        if ($request->Section && $request->product && $request->start_at == '' && $request->end_at == '') {
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+
+            $invoices = Invoice::select('*')->where('section_id', '=', $request->Section)->where('product', '=', $request->product)->get();
+            $sections = sections::all();
+            return view('reports.customers_report', compact('sections'))->withDetails($invoices);
+        }
+
+
+        // في حالة البحث بتاريخ
+
+        else {
+
+            $start_at = date($request->start_at);
+            $end_at = date($request->end_at);
+
+            $invoices = invoice::whereBetween('invoice_Date', [$start_at, $end_at])->where('section_id', '=', $request->Section)->where('product', '=', $request->product)->get();
+            $sections = sections::all();
+            return view('reports.customers_report', compact('sections'))->withDetails($invoices);
+        }
     }
 }

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Invoices;
 
+use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use App\Models\invoice_attachments;
 use App\Models\invoices_details as ModelsInvoices_details;

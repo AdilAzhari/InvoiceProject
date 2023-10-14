@@ -141,8 +141,7 @@
 
                                                     <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                         data-toggle="modal" data-target="#Transfer_invoice"><i
-                                                            class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;نقل الي
-                                                        الارشيف</a>
+                                                            class="text-warning fas fa-exchange-alt"></i>&nbsp;&nbsp;Moved to archive</a>
 
                                                 </div>
                                             </div>
@@ -175,7 +174,7 @@
                         {{ csrf_field() }}
                 </div>
                 <div class="modal-body">
-                    هل انت متاكد من عملية الحذف ؟
+                    Are sure of the deleting process ?
                     <input type="hidden" name="invoice_id" id="invoice_id" value="">
                 </div>
                 <div class="modal-footer">
