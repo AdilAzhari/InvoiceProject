@@ -45,7 +45,7 @@ Route::resource('products', ProductsController::class);
 
 Route::resource('InvoiceAttachments', InvoiceAttachmentsController::class);
 
-Route::resource('InvoicesDetails', InvoicesDetailsController::class);
+Route::resource('InvoicesDetails', invoices_details::class);
 
 Route::resource('Archive', InvoiceAchiveController::class);
 

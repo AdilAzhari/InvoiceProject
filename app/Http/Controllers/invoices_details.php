@@ -21,6 +21,11 @@ class invoices_details extends Controller
         return view('invoices.invoices_Partial', compact('invoices', 'details', 'attachments'));
     }
 
+    public function show(invoices_details $invoices_details)
+    {
+        //
+    }
+
     public function destroy(Request $request)
     {
         $invoices = invoice_attachments::findOrFail($request->id_file);
