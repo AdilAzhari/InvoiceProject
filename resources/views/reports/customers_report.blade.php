@@ -15,7 +15,7 @@
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 
 @section('title')
-    تقرير العملاء - مورا سوفت للادارة الفواتير
+    Customer Report - Billing Management
 @stop
 @endsection
 @section('page-header')
@@ -23,8 +23,9 @@
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">التقارير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تقرير
-                العملاء</span>
+            <h4 class="content-title mb-0 my-auto">Reports</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ Customer
+                Report
+            </span>
         </div>
     </div>
 </div>
@@ -62,11 +63,11 @@
                     <div class="row">
 
                         <div class="col">
-                            <label for="inputName" class="control-label">القسم</label>
+                            <label for="inputName" class="control-label">Section</label>
                             <select name="Section" class="form-control select2" onclick="console.log($(this).val())"
                                 onchange="console.log('change is firing')">
                                 <!--placeholder-->
-                                <option value="" selected disabled>حدد القسم</option>
+                                <option value="" selected disabled>Select Section</option>
                                 @foreach ($sections as $section)
                                     <option value="{{ $section->id }}"> {{ $section->section_name }}</option>
                                 @endforeach
@@ -74,14 +75,14 @@
                         </div>
 
                         <div class="col-lg-3 mg-t-20 mg-lg-t-0">
-                            <label for="inputName" class="control-label">المنتج</label>
+                            <label for="inputName" class="control-label">Product</label>
                             <select id="product" name="product" class="form-control select2">
                             </select>
                         </div>
 
 
                         <div class="col-lg-3" id="start_at">
-                            <label for="exampleFormControlSelect1">من تاريخ</label>
+                            <label for="exampleFormControlSelect1">Start at</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -93,7 +94,7 @@
                         </div>
 
                         <div class="col-lg-3" id="end_at">
-                            <label for="exampleFormControlSelect1">الي تاريخ</label>
+                            <label for="exampleFormControlSelect1">End at </label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -107,7 +108,7 @@
 
                     <div class="row">
                         <div class="col-sm-1 col-md-1">
-                            <button class="btn btn-primary btn-block">بحث</button>
+                            <button class="btn btn-primary btn-block">Search</button>
                         </div>
                     </div>
                 </form>
@@ -120,17 +121,17 @@
                             <thead>
                                 <tr>
                                     <th class="border-bottom-0">#</th>
-                                    <th class="border-bottom-0">رقم الفاتورة</th>
-                                    <th class="border-bottom-0">تاريخ القاتورة</th>
-                                    <th class="border-bottom-0">تاريخ الاستحقاق</th>
-                                    <th class="border-bottom-0">المنتج</th>
-                                    <th class="border-bottom-0">القسم</th>
-                                    <th class="border-bottom-0">الخصم</th>
-                                    <th class="border-bottom-0">نسبة الضريبة</th>
-                                    <th class="border-bottom-0">قيمة الضريبة</th>
-                                    <th class="border-bottom-0">الاجمالي</th>
-                                    <th class="border-bottom-0">الحالة</th>
-                                    <th class="border-bottom-0">ملاحظات</th>
+                                    <th class="border-bottom-0">Invoice Number</th>
+                                    <th class="border-bottom-0">Invoice Date</th>
+                                    <th class="border-bottom-0">Due Date</th>
+                                    <th class="border-bottom-0">Product</th>
+                                    <th class="border-bottom-0">Section</th>
+                                    <th class="border-bottom-0">Discount</th>
+                                    <th class="border-bottom-0">Rate VAT</th>
+                                    <th class="border-bottom-0">Value VAT</th>
+                                    <th class="border-bottom-0">Total</th>
+                                    <th class="border-bottom-0">Status</th>
+                                    <th class="border-bottom-0">Notes</th>
 
                                 </tr>
                             </thead>
@@ -223,7 +224,6 @@
     var date = $('.fc-datepicker').datepicker({
         dateFormat: 'yy-mm-dd'
     }).val();
-
 </script>
 
 <script>
@@ -250,7 +250,6 @@
         });
 
     });
-
 </script>
 
 

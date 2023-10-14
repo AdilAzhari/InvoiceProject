@@ -92,7 +92,7 @@
                                     <th class="border-bottom-0">#</th>
                                     <th class="border-bottom-0">PRoduct Name </th>
                                     <th class="border-bottom-0">Section Name</th>
-                                    <th class="border-bottom-0">Notrs</th>
+                                    <th class="border-bottom-0">Notes</th>
                                     <th class="border-bottom-0">Operations</th>
 
                                 </tr>
@@ -212,8 +212,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">edit data </button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+                            <button type="submit" class="btn btn-primary">Edit data </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         </div>
                     </form>
                 </div>
@@ -226,7 +226,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">product delet </h5>
+                        <h5 class="modal-title">Product delet </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
