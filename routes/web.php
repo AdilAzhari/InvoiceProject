@@ -1,17 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Customers_Report;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Invoices\{InvoiceController,Invoices_Report,InvoiceAchiveController,
     invoices_details};
-use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\SectionsController;
-use App\Http\Controllers\UserController;
-use App\Models\products;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\{ProductsController,RoleController,SectionsController,UserController,
+    AdminController,Customers_Report,HomeController};
+
+use Illuminate\Support\Facades\{Auth,Route};
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +28,7 @@ Route::get('users', [AdminController::class, 'show'])->name('user.index');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('invoices', InvoiceController::class);
 
