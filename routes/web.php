@@ -43,12 +43,6 @@ Route::resource('sections', SectionsController::class);
 
 Route::resource('products', ProductsController::class);
 
-Route::resource('invoices', InvoiceController::class);
-
-Route::resource('sections', SectionsController::class);
-
-Route::resource('products', ProductsController::class);
-
 Route::resource('InvoiceAttachments', InvoiceAttachmentsController::class);
 
 Route::resource('InvoicesDetails', InvoicesDetailsController::class);
@@ -71,8 +65,8 @@ Route::controller(invoices_details::class)->group(function () {
 
 
 Route::controller(Invoices_Report::class)->group(function () {
-    Route::get('/invoices_report', 'index');
-    Route::post('/Search_invoices', 'Search_invoices');
+    Route::get('invoices_report', 'index')->name('reports_index');
+    Route::post('/Search_invoices', 'Search_invoices')->name('Search_invoices');
 });
 
 Route::controller(Customers_Report::class)->group(function () {

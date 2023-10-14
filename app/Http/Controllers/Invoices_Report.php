@@ -3,62 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\invoices;
+use App\Models\Invoice;
 
 class Invoices_Report extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+
+        return view('reports.invoices_report');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function Search_invoices(Request $request)
     {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $rdio = $request->rdio;
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        // في حالة البحث بنوع الفاتورة
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        if ($rdio == 1) {
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+
+            // في حالة عدم تحديد تاريخ
+            if ($request->type && $request->start_at == '' && $request->end_at == '') {
+
+                $invoices = invoice::select('*')->where('Status', '=', $request->type)->get();
+                $type = $request->type;
+                return view('reports.invoices_report', compact('type'))->withDetails($invoices);
+            }
+
+            // في حالة تحديد تاريخ استحقاق
+            else {
+
+                $start_at = date($request->start_at);
+                $end_at = date($request->end_at);
+                $type = $request->type;
+
+                $invoices = Invoice::whereBetween('invoice_Date', [$start_at, $end_at])->where('Status', '=', $request->type)->get();
+                return view('reports.invoices_report', compact('type', 'start_at', 'end_at'))->withDetails($invoices);
+            }
+        }
+
+        //====================================================================
+
+        // في البحث برقم الفاتورة
+        else {
+
+            $invoices = invoices::select('*')->where('invoice_number', '=', $request->invoice_number)->get();
+            return view('reports.invoices_report')->withDetails($invoices);
+        }
     }
 }
