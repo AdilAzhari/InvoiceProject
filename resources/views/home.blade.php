@@ -70,7 +70,7 @@
             <div class="card overflow-hidden sales-card bg-danger-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">الفواتير الغير مدفوعة</h6>
+                        <h6 class="mb-3 tx-12 text-white">Unpaid invoices</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
@@ -111,7 +111,7 @@
             <div class="card overflow-hidden sales-card bg-success-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">الفواتير المدفوعة</h6>
+                        <h6 class="mb-3 tx-12 text-white">Paid invoices</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
@@ -150,7 +150,7 @@
             <div class="card overflow-hidden sales-card bg-warning-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">الفواتير المدفوعة جزئيا</h6>
+                        <h6 class="mb-3 tx-12 text-white">Partially paid invoices</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
@@ -200,7 +200,7 @@
 
                 </div>
                 <div class="card-body" style="width: 70%">
-                    {{-- {!! $chartjs->render() !!} --}}
+                    {!! $chartjs->render() !!}
 
                 </div>
             </div>
@@ -211,7 +211,7 @@
             <div class="card card-dashboard-map-one">
                 <label class="main-content-label">Billing statistic ratio</label>
                 <div class="" style="width: 100%">
-                    {{-- {!! $chartjs_2->render() !!} --}}
+                    {!! $chartjs_2->render() !!}
                 </div>
             </div>
         </div>
