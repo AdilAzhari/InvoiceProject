@@ -69,7 +69,7 @@
                          <div class="pull-right">
                              {{-- @can('Add validity') --}}
                                  <a class="btn btn-primary btn-sm" href="{{ route('roles.create') }}">Add</a>
-                             {{-- @endcan--}}
+                             {{-- @endcan --}}
                          </div>
                      </div>
                      <br>

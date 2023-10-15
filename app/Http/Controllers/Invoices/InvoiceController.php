@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Invoices;
 
 use App\Http\Controllers\Controller;
-use App\Models\Invoice;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\{invoices_details,products,invoice_attachments};
-use App\Models\{User,sections};
+use App\Models\{User,sections,Invoice};
 use App\Notifications\Add_invoice_new;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{DB,Excel};
@@ -36,13 +35,14 @@ class InvoiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreInvoiceRequest $request)
+    public function store(request $request)
     {
-        // return $request;
+        $originalDate = $request->invoice_Date;
+        $newDate = date("Y-m-d", strtotime($originalDate));
 
         Invoice::create([
             'invoice_number' => $request->invoice_number,
-            'invoice_Date' => $request->invoice_Date,
+            'invoice_Date' => $newDate,
             'Due_date' => $request->Due_date,
             'product' => $request->product,
             'section_id' => $request->Section,
@@ -94,6 +94,7 @@ class InvoiceController extends Controller
         // event(new MyEventClass('hello world'));
 
         session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
+        notify()->success('There is new invoice has been created!');
         return back();
     }
     public function show($id)

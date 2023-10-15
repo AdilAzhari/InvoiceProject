@@ -59,7 +59,7 @@
                             <div class="col">
                                 <label>Invoice Date </label>
                                 <input class="form-control fc-datepicker" name="invoice_Date" placeholder="YYYY-MM-DD"
-                                    type="text" value="{{ date('Y-m-d') }}" required>
+                                    type="text"  value="{{ date('YYYY-MM-DD') }}" required>
                             </div>
 
                             <div class="col">

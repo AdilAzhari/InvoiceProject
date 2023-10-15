@@ -87,6 +87,7 @@ class HomeController extends Controller
                 ]
             ])
             ->options([]);
+        notify()->success('Laravel Notify is awesome!');
 
         return view('home', compact('chartjs', 'chartjs_2'));
     }

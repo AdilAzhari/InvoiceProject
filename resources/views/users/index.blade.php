@@ -43,9 +43,9 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="col-sm-1 col-md-2">
-                    {{-- @can('اضافة مستخدم') --}}
+                    @can('add user')
                         <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">اضافة مستخدم</a>
-                    {{-- @endcan --}}
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -88,17 +88,17 @@
                                     </td>
 
                                     <td>
-                                        {{-- @can('تعديل مستخدم') --}}
+                                        @can('edit user')
                                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info"
                                                 title="تعديل"><i class="las la-pen"></i></a>
-                                        {{-- @endcan --}}
+                                        @endcan
 
-                                        {{-- @can('حذف مستخدم') --}}
+                                        @can('delet user')
                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                 data-user_id="{{ $user->id }}" data-username="{{ $user->name }}"
                                                 data-toggle="modal" href="#modaldemo8" title="حذف"><i
                                                     class="las la-trash"></i></a>
-                                        {{-- @endcan --}}
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
@@ -127,8 +127,8 @@
                         <input class="form-control" name="username" id="username" type="text" readonly>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                        <button type="submit" class="btn btn-danger">تاكيد</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Confirm</button>
                     </div>
             </div>
             </form>

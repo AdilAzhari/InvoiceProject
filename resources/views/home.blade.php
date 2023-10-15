@@ -6,6 +6,7 @@
     <!--  Owl-carousel css-->
     <link href="{{ URL::asset('assets/plugins/owl-carousel/owl.carousel.css') }}" rel="stylesheet" />
     <!-- Maps css -->
+    @notifyCss
     <link href="{{ URL::asset('assets/plugins/jqvmap/jqvmap.min.css') }}" rel="stylesheet">
 @endsection
 @section('page-header')
@@ -219,6 +220,8 @@
     <!-- row closed -->
     </div>
     </div>
+    @include('notify::components.notify')
+    @notifyJs
     <!-- Container closed -->
 @endsection
 @section('js')

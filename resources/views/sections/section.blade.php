@@ -66,10 +66,10 @@
             <div class="card mg-b-20">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        {{-- @can('add section') --}}
+                        @can('add section')
                         <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale"
                             data-toggle="modal" href="#modaldemo8">Add section</a>
-                        {{-- @endcan --}}
+                        @endcan
                     </div>
 
                 </div>
@@ -94,20 +94,20 @@
                                         <td>{{ $section->section_name }}</td>
                                         <td>{{ $section->description }}</td>
                                         <td>
-                                            {{-- @can('section edit') --}}
+                                            @can('section edit')
                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                 data-id="{{ $section->id }}"
                                                 data-section_name="{{ $section->section_name }}"
                                                 data-description="{{ $section->description }}" data-toggle="modal"
                                                 href="#exampleModal2" title="edit"><i class="las la-pen"></i></a>
-                                            {{-- @endcan --}}
+                                            @endcan
 
-                                            {{-- @can('section delete') --}}
+                                            @can('section delete')
                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                 data-id="{{ $section->id }}"
                                                 data-section_name="{{ $section->section_name }}"data-toggle="modal"
                                                 href="#modaldemo9" title="delet"><i class="las la-trash"></i></a>
-                                            {{-- @endcan --}}
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
