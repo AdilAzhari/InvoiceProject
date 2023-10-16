@@ -59,7 +59,7 @@ class Add_invoice_new extends Notification
     {
         return [
 
-            //'data' => $this->details['body']
+            'data' => $this->details['body'],
             'id'=> $this->invoices->id,
             'title'=>'A new invoice have been added by ',
             'user'=> Auth::user()->name,
