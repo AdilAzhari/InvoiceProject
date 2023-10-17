@@ -34,8 +34,6 @@ class PermissionTableSeeder extends Seeder
             'setting',
             'products',
             'sections',
-
-
             'add invoice',
             'delet invoice',
             // 'تصدير EXCEL',
@@ -45,25 +43,20 @@ class PermissionTableSeeder extends Seeder
             'print invoice',
             'add attachment',
             'delet attachment',
-
             'add user',
             'edit user',
             'delet user',
-
             'show permission',
             'add persmission',
             'edit permission',
             'delet permission',
-
             'add product',
             'edit product',
             'delet product',
-
             'add section',
             'edit section',
             'delet section',
             'notification',
-
         ];
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);

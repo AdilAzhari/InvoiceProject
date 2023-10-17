@@ -42,7 +42,7 @@ class InvoiceAttachmentsController extends Controller
         'file_name' => 'mimes:pdf,jpeg,png,jpg',
 
         ], [
-            'file_name.mimes' => 'صيغة المرفق يجب ان تكون   pdf, jpeg , png , jpg',
+            'file_name.mimes' => 'The attachment format must be pdf, jpeg, png, jpg',
         ]);
 
         $image = $request->file('file_name');
@@ -59,53 +59,8 @@ class InvoiceAttachmentsController extends Controller
         $imageName = $request->file_name->getClientOriginalName();
         $request->file_name->move(public_path('Attachments/'. $request->invoice_number), $imageName);
 
-        session()->flash('Add', 'تم اضافة المرفق بنجاح');
-        return back();
+        session()->flash('Add', 'The attachment was added successfully');        return back();
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\invoice_attachments  $invoice_attachments
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ModelsInvoice_attachments $invoice_attachments)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\invoice_attachments  $invoice_attachments
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ModelsInvoice_attachments $invoice_attachments)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\invoice_attachments  $invoice_attachments
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ModelsInvoice_attachments $invoice_attachments)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\invoice_attachments  $invoice_attachments
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ModelsInvoice_attachments $invoice_attachments)
-    {
-        //
-    }
 }

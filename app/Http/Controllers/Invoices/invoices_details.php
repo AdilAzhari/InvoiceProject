@@ -32,7 +32,7 @@ class invoices_details extends Controller
         $invoices = invoice_attachments::findOrFail($request->id_file);
         $invoices->delete();
         Storage::disk('public_uploads')->delete($request->invoice_number . '/' . $request->file_name);
-        session()->flash('delete', 'تم حذف المرفق بنجاح');
+        session()->flash('delete', 'The attachment was successfully deleted');
         return back();
     }
 

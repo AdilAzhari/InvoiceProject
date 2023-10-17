@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use DB;
@@ -28,6 +29,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+  /**
+   * The create function retrieves all roles and passes them to the create view.
+   *
+   * @return a view called 'users.create' and passing the variable 'roles' to the view.
+   */
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
@@ -39,16 +45,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
-        ]);
         $input = $request->all();
-        $input['password'] = FacadesHash::make($input['password']);
+        $input['password'] = FacadesHash::make($request->password);
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
         return redirect()->route('users.index')
@@ -95,10 +95,10 @@ class UserController extends Controller
         ]);
         $input = $request->all();
         // if (!empty($request->password)) {
-            $input['password'] = bcrypt($request->password);
+        $input['password'] = bcrypt($request->password);
         // } else {
-            // $input = array_except($input, ['password']);
-            // ($request->all(), ['password', 'otherKey']);
+        // $input = array_except($input, ['password']);
+        // ($request->all(), ['password', 'otherKey']);
         // }
         $user = User::find($id);
         $user->update($input);

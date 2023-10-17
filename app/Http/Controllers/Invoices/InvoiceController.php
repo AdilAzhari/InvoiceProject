@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Invoices;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
-use App\Models\{invoices_details,products,invoice_attachments};
-use App\Models\{User,sections,Invoice};
+use App\Models\{invoices_details, products, invoice_attachments};
+use App\Models\{User, sections, Invoice};
 use App\Notifications\Add_invoice_new;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\{DB,Excel};
-use Illuminate\Support\Facades\{Storage,Notification,Auth};
+use Illuminate\Support\Facades\{DB, Excel};
+use Illuminate\Support\Facades\{Storage, Notification, Auth};
 
 class InvoiceController extends Controller
 {
@@ -63,7 +63,7 @@ class InvoiceController extends Controller
             'invoice_number' => $request->invoice_number,
             'product' => $request->product,
             'Section' => $request->Section,
-            'Status' => 'غير مدفوعة',
+            'Status' => 'unpaid',
             'Value_Status' => 2,
             'note' => $request->note,
             'user' => (Auth::user()->name),
@@ -93,7 +93,7 @@ class InvoiceController extends Controller
 
         // event(new MyEventClass('hello world'));
 
-        session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
+        session()->flash('Add', 'Active effect added');
         notify()->success('There is new invoice has been created!');
         return back();
     }
@@ -142,7 +142,7 @@ class InvoiceController extends Controller
             'note' => $request->note,
         ]);
 
-        session()->flash('edit', 'تم تعديل الفاتورة بنجاح');
+        session()->flash('edit', 'Invoice modified successfully');
         return back();
     }
 

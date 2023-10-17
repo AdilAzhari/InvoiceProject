@@ -161,7 +161,14 @@
 											</div>
 											<div class="mr-3">
 												<h5 class="notification-label mb-1"><x-notify::notify/></h5>
-												<div class="notification-subtext">{{ App\Models\Invoice::all()->last()->created_at->diffForHumans(); }}</div>
+												<div class="notification-subtext">
+                                                    @php
+                                                        $invoice = App\Models\Invoice::all();
+                                                    if(!$invoice){
+                                                        $invoice = App\Models\Invoice::all()->last()->created_at->diffForHumans();
+                                                    }
+                                                    @endphp
+                                              </div>
 											</div>
 											<div class="mr-auto" >
 												<i class="las la-angle-left text-left text-muted"></i>

@@ -43,7 +43,7 @@ class SectionsController extends Controller
     public function update(UpdatesectionsRequest $request, sections $sections)
     {
 
-        $section = sections::where('id', $request->id)->update(
+        $sections->pdate(
             [
                 'section_name' => $request->section_name,
                 'description' => $request->description
