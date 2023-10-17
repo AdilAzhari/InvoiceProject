@@ -30,21 +30,10 @@
 										<a href="#" class="dropdown-item d-flex ">
 											<span class="avatar  ml-3 align-self-center bg-transparent"><img src="{{URL::asset('assets/img/flags/french_flag.jpg')}}" alt="img"></span>
 											<div class="d-flex">
-												<span class="mt-2">French</span>
+												<span class="mt-2">Arabic</span>
 											</div>
 										</a>
-										<a href="#" class="dropdown-item d-flex">
-											<span class="avatar  ml-3 align-self-center bg-transparent"><img src="{{URL::asset('assets/img/flags/germany_flag.jpg')}}" alt="img"></span>
-											<div class="d-flex">
-												<span class="mt-2">Germany</span>
-											</div>
-										</a>
-										<a href="#" class="dropdown-item d-flex">
-											<span class="avatar ml-3 align-self-center bg-transparent"><img src="{{URL::asset('assets/img/flags/italy_flag.jpg')}}" alt="img"></span>
-											<div class="d-flex">
-												<span class="mt-2">Italy</span>
-											</div>
-										</a>
+
 									</div>
 								</div>
 							</li>
@@ -195,12 +184,9 @@
 											</div>
 										</div>
 									</div>
-									<a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>Profile</a>
-									<a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit Profile</a>
-									<a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
-									<a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
-									<a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
-									<a class="dropdown-item" href="{{ url('/' . $page='page-signin') }}"><i class="bx bx-log-out"></i> Sign Out</a>
+									<a class="dropdown-item" {{ route('user.profile')}}><i class="bx bx-user-circle"></i>Profile</a>
+									<a class="dropdown-item" href="{{ route('user.profile') }}"><i class="bx bx-cog"></i> Edit Profile</a>
+									<a class="dropdown-item" href="{{ url('/page-signin') }}"><i class="bx bx-log-out"></i> Sign Out</a>
 								</div>
 							</div>
 							<div class="dropdown main-header-message right-toggle">

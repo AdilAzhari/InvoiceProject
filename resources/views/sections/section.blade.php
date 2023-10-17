@@ -94,7 +94,7 @@
                                         <td>{{ $section->section_name }}</td>
                                         <td>{{ $section->description }}</td>
                                         <td>
-                                            @can('section edit')
+                                            @can('edit section')
                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                 data-id="{{ $section->id }}"
                                                 data-section_name="{{ $section->section_name }}"
@@ -102,7 +102,7 @@
                                                 href="#exampleModal2" title="edit"><i class="las la-pen"></i></a>
                                             @endcan
 
-                                            @can('section delete')
+                                            @can('delet section')
                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                 data-id="{{ $section->id }}"
                                                 data-section_name="{{ $section->section_name }}"data-toggle="modal"

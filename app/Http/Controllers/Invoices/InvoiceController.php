@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\{invoices_details, products, invoice_attachments};
 use App\Models\{User, sections, Invoice};
 use App\Notifications\Add_invoice_new;
+use App\Notifications\AddInvoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{DB, Excel};
 use Illuminate\Support\Facades\{Storage, Notification, Auth};
@@ -89,7 +90,7 @@ class InvoiceController extends Controller
         }
         $user = User::get();
         $invoices = invoice::latest()->first();
-        Notification::send($user, new Add_invoice_new($invoices));
+        Notification::send($user, new AddInvoice($invoices));
 
         // event(new MyEventClass('hello world'));
 

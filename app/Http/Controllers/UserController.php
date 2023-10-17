@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 
 class UserController extends Controller
@@ -29,11 +31,6 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  /**
-   * The create function retrieves all roles and passes them to the create view.
-   *
-   * @return a view called 'users.create' and passing the variable 'roles' to the view.
-   */
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
@@ -47,12 +44,15 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $input = $request->all();
-        $input['password'] = FacadesHash::make($request->password);
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
-        return redirect()->route('users.index')
-            ->with('success', 'User created successfully');
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'Status' => $request->status,
+        ]);
+        $user->assignRole($request->roles_name);
+
+        return to_route('users.index')->with('success', 'User created successfully');
     }
     /**
      * Display the specified resource.
@@ -85,20 +85,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'same:confirm-password',
-            'roles' => 'required'
-        ]);
         $input = $request->all();
         // if (!empty($request->password)) {
-        $input['password'] = bcrypt($request->password);
+            $input['password'] = bcrypt($request->password);
         // } else {
-        // $input = array_except($input, ['password']);
-        // ($request->all(), ['password', 'otherKey']);
+            // $input = array_except($input, ['password']);
+            // ($request->all(), ['password', 'otherKey']);
         // }
         $user = User::find($id);
         $user->update($input);
@@ -107,6 +101,10 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success', 'User updated successfully');
     }
+
+    // public function profile() {
+        // return view('profile');
+    // }
     /**
      * Remove the specified resource from storage.
      *

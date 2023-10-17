@@ -4,7 +4,7 @@ use App\Http\Controllers\Invoices\{InvoiceController,Invoices_Report,InvoiceAchi
     invoices_details};
 
 use App\Http\Controllers\{ProductsController,RoleController,SectionsController,UserController,
-    AdminController,Customers_Report,HomeController};
+    AdminController,Customers_Report,HomeController, UserProfileController};
 
 use Illuminate\Support\Facades\{Auth,Route};
 
@@ -87,4 +87,12 @@ Route::get('/{page}', [AdminController::class,'index']);
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+    Route::controller(userController::class)->group(function () {
+        Route::get('/profile', 'profile')->name('profile');
+        Route::post('/orders', 'store');
+    });
+});
+
+Route::controller(UserProfileController::class)->group(function () {
+    Route::get('profile/index', 'index')->name('user.profile');
 });
