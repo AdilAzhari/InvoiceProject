@@ -9,7 +9,6 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use DB;
-use Hash;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 
@@ -102,9 +101,6 @@ class UserController extends Controller
             ->with('success', 'User updated successfully');
     }
 
-    // public function profile() {
-        // return view('profile');
-    // }
     /**
      * Remove the specified resource from storage.
      *
